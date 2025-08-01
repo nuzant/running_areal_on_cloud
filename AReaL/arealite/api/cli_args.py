@@ -840,7 +840,7 @@ def parse_cli_args(argv: List[str]):
     args, overrides = parser.parse_known_args(argv)
     # Initialize hydra config
     config_file = Path(args.config).absolute()
-    assert config_file.exists()
+    assert config_file.exists(), config_file
     # hydra only recognize relative paths
     relpath = Path(os.path.relpath(str(config_file), Path(__file__).parent.absolute()))
     hydra_init(config_path=str(relpath.parent), job_name="app", version_base=None)
