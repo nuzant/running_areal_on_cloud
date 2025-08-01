@@ -376,9 +376,6 @@ def ray_main(config, run_id: int = 0):
     allocation_mode = AllocationMode.from_str(allocation_mode)
     sglang_addrs = []
     
-    logger.info(
-        f">>>>>>>>>>>>>>>>>> 1111 >>>>>>>>>>>>>>>>>>>>>"
-    )
     n_sglang_nodes = 0
     if allocation_mode.type_ == AllocationType.DECOUPLED_SGLANG:
         # Launcher should launch SGLang servers according to allocation mode.
@@ -393,9 +390,6 @@ def ray_main(config, run_id: int = 0):
         ]
         sglang_entry_point = str(
             pathlib.Path(__file__).resolve().parent.joinpath("sglang_server.py")
-        )
-        logger.info(
-            f">>>>>>>>>>>>>>>>>> 2222 >>>>>>>>>>>>>>>>>>>>>"
         )
         launcher.submit_array(
             job_array_name="llm_server",
@@ -413,11 +407,6 @@ def ray_main(config, run_id: int = 0):
                 config.launcher.inference_server_env_vars,
             ),
         )
-        logger.info(
-            f">>>>>>>>>>>>>>>>>> 3333 >>>>>>>>>>>>>>>>>>>>>"
-        )
-        launcher.wait(check_status=(JobState.COMPLETED, JobState.FAILED))
-        exit(0)
         # Get SGLang server addresses via name_resolve
         try:
             sglang_addrs = wait_sglang_server_addrs(

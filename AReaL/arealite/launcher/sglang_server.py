@@ -114,7 +114,6 @@ class SGLangServerWrapper:
         name_resolve.add_subentry(name, f"{host_ip}:{server_port}")
 
         logger.info(f"SGLang server launched at: http://{host_ip}:{server_port}")
-        raise Exception()
         return_code = self.server_process.wait()
         logger.info(
             f"SGLang server at http://{host_ip}:{server_port} exits, returncode={return_code}"
