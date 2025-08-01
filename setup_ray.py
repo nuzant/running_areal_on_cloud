@@ -124,7 +124,6 @@ def _get_default_docker_args():
     flags += [
         f"--env CUDA_VISIBLE_DEVICES={','.join([str(i) for i in range(8)])}",
     ]
-    
     flags += [
         f"--env PYTHONPATH={base_path}/AReaL",
     ]
@@ -134,6 +133,7 @@ def _get_default_docker_args():
     flags.append("--shm-size=100gb")
     flags.append("--ulimit memlock=-1")
     flags.append("--ipc=host")
+    flags.append("--net=host")
     flags.append("--ulimit stack=67108864")
     return " ".join(flags)
 
