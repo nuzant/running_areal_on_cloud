@@ -405,8 +405,8 @@ def ray_main(config, run_id: int = 0):
                 config.launcher.inference_server_env_vars,
             ),
         )
-        launcher.wait(check_status=(JobState.COMPLETED, JobState.FAILED))
-        exit(0)
+        # launcher.wait(check_status=(JobState.COMPLETED, JobState.FAILED))
+        # exit(0)
         # Get SGLang server addresses via name_resolve
         try:
             sglang_addrs = wait_sglang_server_addrs(
