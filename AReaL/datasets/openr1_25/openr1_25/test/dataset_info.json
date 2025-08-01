@@ -1,0 +1,52 @@
+{
+  "builder_name": "json",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "json",
+  "dataset_size": 8144568,
+  "description": "",
+  "download_checksums": {
+    "/storage/openpsi/users/shenshen.ljz/AReaLite/AReaL/datasets/openr1_25/data/train.jsonl": {
+      "num_bytes": 8613109,
+      "checksum": null
+    },
+    "/storage/openpsi/users/shenshen.ljz/AReaLite/AReaL/datasets/openr1_25/data/test.jsonl": {
+      "num_bytes": 63292,
+      "checksum": null
+    }
+  },
+  "download_size": 8676401,
+  "features": {
+    "question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "answer": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 16820969,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 8085092,
+      "num_examples": 10653,
+      "dataset_name": "json"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 59476,
+      "num_examples": 120,
+      "dataset_name": "json"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
