@@ -33,7 +33,7 @@ def process_gsm8k_rl_dataset(dataset: Dataset):
 
 
 def get_gsm8k_dataset(split, rank, world_size):
-    dataset = load_from_disk("datasets/openr1_25/openr1_25")[split]
+    dataset = load_from_disk("/storage/running_areal_on_cloud/AReaL/datasets/openr1_25/openr1_25")[split]
     dataset = split_dataset_by_node(dataset, rank=rank, world_size=world_size)
     return process_gsm8k_rl_dataset(dataset)
 
