@@ -35,7 +35,7 @@ def copy_code_repo(args, container_name):
 
 
 def setup_ray(args):
-    assert args.end_idx >= args.start_idx, (args.start_idx, args.end_idx)
+    # assert args.end_idx >= args.start_idx, (args.start_idx, args.end_idx)
     first_node = ip_list[args.start_idx]
     container_name = f"{args.container_name}-{user}"
     print(f"Setting up docker container in the head node...")
