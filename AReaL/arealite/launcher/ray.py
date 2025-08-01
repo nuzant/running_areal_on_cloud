@@ -98,9 +98,7 @@ class RayLauncher:
             Dict[str, str]
         ] = None,  # keyword arguments to pass to the function
     ):
-        logger.info(
-            f">>>>>>>>>>>>>>>>>> submit {job_name} >>>>>>>>>>>>>>>>>>>>>"
-        )
+        logger.info(f"Submit {job_name}")
         job_array_name = job_name.split(":")[0]
         if kwargs is None:
             kwargs = {}
