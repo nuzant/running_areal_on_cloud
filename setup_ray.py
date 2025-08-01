@@ -121,6 +121,9 @@ def _get_default_docker_args():
     flags = [
         f"-v /storage:/storage",
     ]
+    flags += [
+        f"--env CUDA_VISIBLE_DEVICES={','.join([str(i) for i in range(8)])}",
+    ]
     flags += ["--device /dev/infiniband/rdma_cm"]
     for i in range(8):
         flags.append(f"--device /dev/infiniband/uverbs{i}")
