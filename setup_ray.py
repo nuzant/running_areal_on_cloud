@@ -108,7 +108,7 @@ def setup_ray(args):
 
 def destroy_ray(args):
     container_name = f"{args.container_name}-{user}"
-    cmd = f'pdsh -w {','.join(ip_list[args.start_idx:args.start_idx + args.n_nodes])} -R ssh "docker rm -f {container_name}"'
+    cmd = f"pdsh -w {','.join(ip_list[args.start_idx:args.start_idx + args.n_nodes])} -R ssh \"docker rm -f {container_name}\""
     # for i in reversed(range(args.start_idx, args.end_idx + 1)):
     #     node = f"{args.node_prefix}{i:02d}"
     #     _cmd = f"ssh {os.getlogin()}@{node} \"docker rm -f {container_name}\""
