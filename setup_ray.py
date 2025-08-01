@@ -62,7 +62,7 @@ def setup_ray(args):
     subprocess.run(f"ssh {user}@{first_node} \"{cmd}\"", shell=True)
 
     def execute_slave_cmd(c):
-        cc= f"pdsh -R ssh -w {','.join(ip_list[args.start_idx:args.start_idx + args.n_nodes])} {c}"
+        cc= f"pdsh -R ssh -w {','.join(ip_list[args.start_idx+1:args.start_idx + args.n_nodes])} {c}"
         print(f"running `{cc}`")
         subprocess.run(cc, shell=True)
 
@@ -97,7 +97,7 @@ def setup_ray(args):
         )
     )
     print(
-        f" To shutdown the ray cluster, run: `python3 rayc.py stop`. ".center(100, "=")
+        f" To shutdown the ray cluster, run: `python3 setup_ray.py stop`. ".center(100, "=")
     )
     print(
         f" Now you can enter the docker container to run your code: `docker exec -it {container_name} bash`. ".center(
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
     subparser = subparsers.add_parser("start", help="starts an experiment")
     subparser.add_argument(
-        "--start_idx", "-s", type=int, default=1, help="The start node index, inclusive"
+        "--start_idx", "-s", type=int, default=0, help="The start node index, inclusive"
     )
     subparser.add_argument(
         "--n_nodes",
