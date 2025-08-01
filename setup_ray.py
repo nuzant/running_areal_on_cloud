@@ -11,9 +11,10 @@ base_path = "/storage/running_areal_on_cloud"
 n_nodes = 4
 ip_list = [
     "172.17.16.2",
-    "172.17.16.3",
+    # "172.17.16.3",
     "172.17.16.4",
-    "172.17.16.5"
+    "172.17.16.5",
+    "172.17.16.6"
 ]
 user = getpass.getuser()
 
