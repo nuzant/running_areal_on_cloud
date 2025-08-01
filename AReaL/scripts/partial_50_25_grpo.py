@@ -69,16 +69,10 @@ def get_gsm8k_dataset(split, rank, world_size):
 #     return label
 
 
-def gsm8k_reward_fn(
-    prompt, completions, prompt_ids, completion_ids, query_id, solutions, **kwargs
-):
+def gsm8k_reward_fn(prompt, completions, prompt_ids, completion_ids, answer, **kwargs):
     from realhf.impl.dataset.math_parser import process_results
 
-    label = 0
-    for sol in solutions:
-        x = process_results(completions, sol)
-        label = label or x[0]
-    return label
+    return int(process_results(completions, answer)[0])
 
 
 def main(args):
