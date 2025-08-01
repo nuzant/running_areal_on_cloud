@@ -54,7 +54,7 @@ rollout:
 actor:
   experiment_name: ${experiment_name}
   trial_name: ${trial_name}
-  path: /storage/openpsi/users/shenshen.ljz/new/ljz-deepscaler-50/partial-50
+  path: /storage/ljz-arealite-reproduce/OpenMath-Nemotron-1.5B
   init_from_scratch: false
   disable_dropout: true
   gradient_checkpointing: true
