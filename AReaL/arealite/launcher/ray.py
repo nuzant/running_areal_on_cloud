@@ -98,6 +98,9 @@ class RayLauncher:
             Dict[str, str]
         ] = None,  # keyword arguments to pass to the function
     ):
+        logger.info(
+            f">>>>>>>>>>>>>>>>>> submit {job_name} >>>>>>>>>>>>>>>>>>>>>"
+        )
         job_array_name = job_name.split(":")[0]
         if kwargs is None:
             kwargs = {}
@@ -264,7 +267,7 @@ class RayLauncher:
                 ray.cancel(future, force=force)
             except Exception as e:
                 logger.error(f"Failed to cancel job {job_name}: {e}")
-                retur
+                return
             self.jobs.pop(job_name, None)
             if job_array_name:
                 assert job_array_name in self.placement_group_jobs
@@ -372,6 +375,10 @@ def ray_main(config, run_id: int = 0):
     allocation_mode = config.allocation_mode
     allocation_mode = AllocationMode.from_str(allocation_mode)
     sglang_addrs = []
+    
+    logger.info(
+        f">>>>>>>>>>>>>>>>>> 1111 >>>>>>>>>>>>>>>>>>>>>"
+    )
     n_sglang_nodes = 0
     if allocation_mode.type_ == AllocationType.DECOUPLED_SGLANG:
         # Launcher should launch SGLang servers according to allocation mode.
@@ -386,6 +393,9 @@ def ray_main(config, run_id: int = 0):
         ]
         sglang_entry_point = str(
             pathlib.Path(__file__).resolve().parent.joinpath("sglang_server.py")
+        )
+        logger.info(
+            f">>>>>>>>>>>>>>>>>> 2222 >>>>>>>>>>>>>>>>>>>>>"
         )
         launcher.submit_array(
             job_array_name="llm_server",
@@ -402,6 +412,9 @@ def ray_main(config, run_id: int = 0):
                 config.cluster.cluster_name,
                 config.launcher.inference_server_env_vars,
             ),
+        )
+        logger.info(
+            f">>>>>>>>>>>>>>>>>> 3333 >>>>>>>>>>>>>>>>>>>>>"
         )
         # Get SGLang server addresses via name_resolve
         try:

@@ -153,7 +153,7 @@ stats_logger:
 
 # Launcher
 launcher:
-  inference_server_cpus_per_gpu: 12
-  inference_server_mem_per_gpu: 153600
-  trainer_cpus_per_gpu: 12
-  trainer_mem_per_gpu: 153600
+  inference_server_cpus_per_gpu: 10
+  inference_server_mem_per_gpu: 120000
+  trainer_cpus_per_gpu: 10
+  trainer_mem_per_gpu: 120000
