@@ -24,11 +24,11 @@ logger = logging.getLogger("Partial-50-25 grpo")
 
 
 def process_gsm8k_rl_dataset(dataset: Dataset):
-    def process(sample):
+    def process(sample, idx):
         messages = [{"role": "user", "content": sample["question"]}]
-        return {"messages": messages}
+        return {"messages": messages, "index": idx}
 
-    dataset = dataset.map(process).remove_columns(["question"])
+    dataset = dataset.map(process, with_indices=True).remove_columns(["question"])
     return dataset
 
 
