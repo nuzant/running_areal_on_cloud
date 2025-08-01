@@ -283,8 +283,9 @@ class RemoteSGLangEngine(InferenceEngine):
         self,
         dataloader: StatefulDataLoader,
         workflow: RolloutWorkflow,
+        should_accept: Callable = lambda x: x is not None,
     ):
-        return self.workflow_executor.prepare_batch(dataloader, workflow)
+        return self.workflow_executor.prepare_batch(dataloader, workflow, should_accept=should_accept)
 
     def pause(self):
         """Pause request submission for async rollout. Used during evaluation to prevent data over generation."""
